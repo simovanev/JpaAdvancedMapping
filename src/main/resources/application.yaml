@@ -4,6 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: mysqljava18!
+# Turn off the spring boot banner
   main:
     banner-mode: off
 #  security:
@@ -11,8 +12,8 @@ spring:
 #      name: simo
 #      password: test123
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    defer-datasource-initialization: true
+#    database-platform: org.hibernate.dialect.MySQLDialect
+#    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
     open-in-view: on
@@ -21,15 +22,16 @@ spring:
       mode: never
 
 # Login config to display SQL statements
-#logging:
-#  level:
-#    root: warn
-#    org:
-#      hibernate:
-#        sql: debug
-#        orm:
-#          jdbc:
-#            bind: trace
-#      springframework:
-#        security: debug
+logging:
+  level:
+    root: warn
+
+    org:
+      hibernate:
+        sql: debug
+        orm:
+          jdbc:
+            bind: trace
+      springframework:
+        security: debug
 
