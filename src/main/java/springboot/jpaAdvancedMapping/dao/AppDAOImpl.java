@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 import springboot.jpaAdvancedMapping.entity.Instructor;
 
 public class AppDAOImpl implements AppDAO{
-    private EntityManager manager;
+    private final EntityManager manager;
 
     public AppDAOImpl(EntityManager manager) {
         this.manager = manager;

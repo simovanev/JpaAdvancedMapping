@@ -28,7 +28,7 @@ logging:
 
     org:
       hibernate:
-        sql: debug
+        sql: trace
         orm:
           jdbc:
             bind: trace
