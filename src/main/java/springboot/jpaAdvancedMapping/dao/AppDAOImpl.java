@@ -10,6 +10,7 @@ public class AppDAOImpl implements AppDAO{
         this.manager = manager;
     }
 
+
     @Override
     public void save(Instructor instructor) {
         manager.persist(instructor);
