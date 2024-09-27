@@ -11,17 +11,22 @@ public class Initialization implements CommandLineRunner {
 
     private AppDAO appDAO;
 
+    public Initialization(AppDAO appDAO) {
+        this.appDAO = appDAO;
+    }
+
+
     @Override
     public void run(String... args) throws Exception {
+        createInstructor(appDAO);
+    }
+
+    private void createInstructor(AppDAO appDAO) {
         Instructor instructor = new Instructor("Simo", "Vanev", "test@abv.bg");
         InstructorDetail details = new InstructorDetail("theChannel", "running");
         instructor.setInstructorDetail(details);
         appDAO.save(instructor);
-        System.out.println("Save instructor " + instructor);createInstructor(appDAO);
-    }
-
-    private void createInstructor(AppDAO appDAO) {
-
+        System.out.println("Save instructor " + instructor);
     }
 
 }
