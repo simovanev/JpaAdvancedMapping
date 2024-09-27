@@ -9,7 +9,7 @@ public class Instructor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
-    private String lastname;
+    private String lastName;
     private String email;
     @OneToOne(cascade =CascadeType.ALL )
     private InstructorDetail  instructorDetail;
@@ -20,7 +20,7 @@ public class Instructor {
 
     public Instructor(String firstName, String lastname, String email) {
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastname;
         this.email = email;
     }
 
@@ -41,11 +41,11 @@ public class Instructor {
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public String getEmail() {
@@ -69,7 +69,7 @@ public class Instructor {
         return "Instructor{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", lastname='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", instructorDetail=" + instructorDetail +
                 '}';
