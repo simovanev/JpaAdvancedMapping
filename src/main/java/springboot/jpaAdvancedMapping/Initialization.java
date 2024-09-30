@@ -18,17 +18,17 @@ public class Initialization implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // createInstructor(appDAO);
+        //createInstructor(appDAO);
         //findInstructor(appDAO);
         //deleteInstructor(appDAO);
         //findInstructorDetailsById(appDAO);
-        deleteDetails(appDAO);
+         deleteDetails(appDAO);
     }
 
     private void deleteDetails(AppDAO appDAO) {
-        int id=1;
+        int id=3;
         System.out.println("Details to be deleted: "+id);
-        appDAO.deleteInstructorDetail(1);
+        appDAO.deleteInstructorDetail(id);
         System.out.println("Done!");
     }
 

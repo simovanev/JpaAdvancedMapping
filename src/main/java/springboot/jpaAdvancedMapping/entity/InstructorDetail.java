@@ -10,7 +10,7 @@ public class InstructorDetail {
     private int id;
     private String youtubeChannel;
     private String hobby;
-    @OneToOne(mappedBy = "instructorDetail" , cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "instructorDetail" , cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     private Instructor instructor;
 
     public InstructorDetail() {
