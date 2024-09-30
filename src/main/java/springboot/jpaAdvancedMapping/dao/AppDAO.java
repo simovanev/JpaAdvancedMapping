@@ -5,6 +5,7 @@ import springboot.jpaAdvancedMapping.entity.Instructor;
 public interface AppDAO {
     void save(Instructor instructor);
     Instructor findById(int id);
+    void delete(int id);
 
 
 }
