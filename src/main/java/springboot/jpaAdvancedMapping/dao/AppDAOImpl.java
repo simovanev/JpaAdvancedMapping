@@ -4,6 +4,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import springboot.jpaAdvancedMapping.entity.Instructor;
+import springboot.jpaAdvancedMapping.entity.InstructorDetail;
+
 @Repository
 public class AppDAOImpl implements AppDAO{
     private final EntityManager manager;
@@ -29,5 +31,10 @@ public class AppDAOImpl implements AppDAO{
     public void delete(int id) {
         Instructor byId = findById(id);
         manager.remove(byId);
+    }
+
+    @Override
+    public InstructorDetail findDetailById(int id) {
+        return manager.find(InstructorDetail.class, id);
     }
 }

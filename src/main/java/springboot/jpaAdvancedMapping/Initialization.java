@@ -20,7 +20,16 @@ public class Initialization implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // createInstructor(appDAO);
         //findInstructor(appDAO);
-        deleteInstructor(appDAO);
+        //deleteInstructor(appDAO);
+        findInstructorDetailsById(appDAO);
+    }
+
+    private void findInstructorDetailsById(AppDAO appDAO) {
+        int id=1;
+        System.out.println("The id is: "+id);
+        InstructorDetail detailById = appDAO.findDetailById(id);
+        System.out.println("The details are: "+detailById);
+        System.out.println("The instructor is: "+detailById.getInstructor());
     }
 
     private void deleteInstructor(AppDAO appDAO) {
