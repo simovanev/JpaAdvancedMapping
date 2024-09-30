@@ -9,7 +9,7 @@ import springboot.jpaAdvancedMapping.entity.InstructorDetail;
 @Component
 public class Initialization implements CommandLineRunner {
 
-    private AppDAO appDAO;
+    private final AppDAO appDAO;
 
     public Initialization(AppDAO appDAO) {
         this.appDAO = appDAO;
@@ -18,11 +18,20 @@ public class Initialization implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        createInstructor(appDAO);
+       // createInstructor(appDAO);
+        findInstructor(appDAO);
+    }
+
+    private void findInstructor(AppDAO appDAO) {
+        Instructor instructor = new Instructor();
+        instructor = appDAO.findById(1);
+        System.out.println("the id of the instructor is: " + instructor.getId());
+        System.out.println("Instructor: " + instructor);
+        System.out.println("Instructor Detail: " + instructor.getInstructorDetail());
     }
 
     private void createInstructor(AppDAO appDAO) {
-        Instructor instructor = new Instructor("Simo", "Vanev", "test@abv.bg");
+        Instructor instructor = new Instructor("Gosho", "Peshev", "test@abv.bg");
         InstructorDetail details = new InstructorDetail("theChannel", "running");
         instructor.setInstructorDetail(details);
         appDAO.save(instructor);
