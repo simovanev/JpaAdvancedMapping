@@ -16,7 +16,8 @@ public class Instructor {
     private String email;
     @OneToOne(cascade =CascadeType.ALL )
     private InstructorDetail  instructorDetail;
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(fetch = FetchType.EAGER
+            ,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Course> courses;
 
     public Instructor(){

@@ -24,7 +24,16 @@ public class Initialization implements CommandLineRunner {
         //deleteInstructor(appDAO);
         //findInstructorDetailsById(appDAO);
         //deleteDetails(appDAO);
-        createInstructorWithCourses(appDAO);
+        //createInstructorWithCourses(appDAO);
+        extractInstructorDetails(appDAO);
+    }
+
+    private void extractInstructorDetails(AppDAO appDAO) {
+        int id=1;
+        Instructor instructor=appDAO.findById(id);
+        System.out.println("The id is: " + id);
+        System.out.println("The instructor details are: "+instructor);
+        System.out.println("The course details are: "+instructor.getCourses());
     }
 
     private void createInstructorWithCourses(AppDAO appDAO) {
