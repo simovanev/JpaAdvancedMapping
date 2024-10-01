@@ -2,6 +2,9 @@ package springboot.jpaAdvancedMapping.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 public class Instructor {
@@ -13,6 +16,8 @@ public class Instructor {
     private String email;
     @OneToOne(cascade =CascadeType.ALL )
     private InstructorDetail  instructorDetail;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    private List<Course> courses;
 
     public Instructor(){
 
@@ -40,12 +45,12 @@ public class Instructor {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastName = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -64,6 +69,14 @@ public class Instructor {
         this.instructorDetail = instructorDetail;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
     @Override
     public String toString() {
         return "Instructor{" +
@@ -73,5 +86,12 @@ public class Instructor {
                 ", email='" + email + '\'' +
                 ", instructorDetail=" + instructorDetail +
                 '}';
+    }
+    public void addCourse(Course course) {
+        if(courses==null){
+            courses = new ArrayList<>();
+        }
+        courses.add(course);
+        course.setInstructor(this);
     }
 }

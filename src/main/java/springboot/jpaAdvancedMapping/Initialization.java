@@ -3,6 +3,7 @@ package springboot.jpaAdvancedMapping;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import springboot.jpaAdvancedMapping.dao.AppDAO;
+import springboot.jpaAdvancedMapping.entity.Course;
 import springboot.jpaAdvancedMapping.entity.Instructor;
 import springboot.jpaAdvancedMapping.entity.InstructorDetail;
 
@@ -22,7 +23,26 @@ public class Initialization implements CommandLineRunner {
         //findInstructor(appDAO);
         //deleteInstructor(appDAO);
         //findInstructorDetailsById(appDAO);
-         deleteDetails(appDAO);
+        //deleteDetails(appDAO);
+        createInstructorWithCourses(appDAO);
+    }
+
+    private void createInstructorWithCourses(AppDAO appDAO) {
+        Instructor instructor = new Instructor("Dichko", "Hristov", "test@abv.bg");
+        InstructorDetail details = new InstructorDetail("theChannel", "running");
+        instructor.setInstructorDetail(details);
+        Course c1= new Course("Java");
+        Course c2= new Course("JavaScript");
+        Course c3= new Course("Python");
+        Course c4= new Course("c#");
+        instructor.addCourse(c1);
+        instructor.addCourse(c2);
+        instructor.addCourse(c3);
+        instructor.addCourse(c4);
+        System.out.println("Save instructor " + instructor);
+        System.out.println("Save courses " + instructor.getCourses());
+        appDAO.save(instructor);
+        System.out.println("Done!");
     }
 
     private void deleteDetails(AppDAO appDAO) {
