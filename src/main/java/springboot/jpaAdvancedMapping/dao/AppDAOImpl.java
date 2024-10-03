@@ -55,7 +55,8 @@ public class AppDAOImpl implements AppDAO {
         TypedQuery<Course> query = manager.createQuery(
                 "SELECT c FROM Course c WHERE c.instructor.id=:id", Course.class);
         query.setParameter("id", id);
+        List<Course> courses = query.getResultList();
 
-        return query.getResultList();
+        return courses;
     }
 }
