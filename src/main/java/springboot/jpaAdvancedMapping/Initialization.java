@@ -23,18 +23,18 @@ public class Initialization implements CommandLineRunner {
     public void run(String... args) throws Exception {
         //createInstructor(appDAO);
         //findInstructor(appDAO);
-        //deleteInstructor(appDAO);
+        deleteInstructor(appDAO);
         //findInstructorDetailsById(appDAO);
         //deleteDetails(appDAO);
         //createInstructorWithCourses(appDAO);
         //extractInstructorDetails(appDAO);
         //findCoursesById(appDAO);
         //updateInstructor(appDAO);
-        updateCourse(appDAO);
+        //updateCourse(appDAO);
     }
 
     private void updateCourse(AppDAO appDAO) {
-        int id=11;
+        int id = 11;
         Course courseById = appDAO.findCourseById(id);
         courseById.setTitle("Spring Boot JPA Advanced Mapping");
         appDAO.updateCourse(courseById);
@@ -100,7 +100,7 @@ public class Initialization implements CommandLineRunner {
     }
 
     private void deleteInstructor(AppDAO appDAO) {
-        int id = 2;
+        int id = 1;
         System.out.println("Deleting instructor by id: " + id);
         appDAO.delete(id);
         System.out.println("Done!");
