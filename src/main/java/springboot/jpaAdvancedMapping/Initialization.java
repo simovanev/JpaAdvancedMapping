@@ -23,7 +23,7 @@ public class Initialization implements CommandLineRunner {
     public void run(String... args) throws Exception {
         //createInstructor(appDAO);
         //findInstructor(appDAO);
-        deleteInstructor(appDAO);
+        //deleteInstructor(appDAO);
         //findInstructorDetailsById(appDAO);
         //deleteDetails(appDAO);
         //createInstructorWithCourses(appDAO);

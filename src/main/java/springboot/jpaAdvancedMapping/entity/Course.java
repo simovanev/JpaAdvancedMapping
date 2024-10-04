@@ -2,6 +2,9 @@ package springboot.jpaAdvancedMapping.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "course")
 public class Course {
@@ -12,6 +15,8 @@ public class Course {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
     public Course() {
     }
@@ -42,6 +47,21 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void addReview(Review review) {
+        if (reviews == null) {
+            reviews = new ArrayList<>();
+            reviews.add(review);
+        }
     }
 
     @Override
