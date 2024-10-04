@@ -29,7 +29,15 @@ public class Initialization implements CommandLineRunner {
         //createInstructorWithCourses(appDAO);
         //extractInstructorDetails(appDAO);
         //findCoursesById(appDAO);
-        updateInstructor(appDAO);
+        //updateInstructor(appDAO);
+        updateCourse(appDAO);
+    }
+
+    private void updateCourse(AppDAO appDAO) {
+        int id=11;
+        Course courseById = appDAO.findCourseById(id);
+        courseById.setTitle("Spring Boot JPA Advanced Mapping");
+        appDAO.updateCourse(courseById);
     }
 
     private void updateInstructor(AppDAO appDAO) {
