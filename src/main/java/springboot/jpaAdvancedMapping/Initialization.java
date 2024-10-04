@@ -41,7 +41,7 @@ public class Initialization implements CommandLineRunner {
     }
 
     private void updateInstructor(AppDAO appDAO) {
-        int id=1;
+
         Instructor instructor = appDAO.findById(1);
         instructor.setFirstName("Tester");
         appDAO.update(instructor);
