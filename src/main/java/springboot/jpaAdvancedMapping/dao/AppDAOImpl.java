@@ -58,4 +58,10 @@ public class AppDAOImpl implements AppDAO {
 
         return query.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void update(Instructor instructor) {
+        manager.merge(instructor);
+    }
 }
