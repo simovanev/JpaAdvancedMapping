@@ -6,6 +6,7 @@ import springboot.jpaAdvancedMapping.dao.AppDAO;
 import springboot.jpaAdvancedMapping.entity.Course;
 import springboot.jpaAdvancedMapping.entity.Instructor;
 import springboot.jpaAdvancedMapping.entity.InstructorDetail;
+import springboot.jpaAdvancedMapping.entity.Review;
 
 import java.util.List;
 
@@ -31,6 +32,17 @@ public class Initialization implements CommandLineRunner {
         //findCoursesById(appDAO);
         //updateInstructor(appDAO);
         //updateCourse(appDAO);
+        saveCourseWithAssociatedReviews(appDAO);
+    }
+
+    private void saveCourseWithAssociatedReviews(AppDAO appDAO) {
+        Course course = new Course("Udemy spring boot app course");
+        course.addReview(new Review("I like it"));
+        course.addReview(new Review("Very useful"));
+        course.addReview(new Review("Not bad"));
+        System.out.println(course);
+        appDAO.saveCourse(course);
+        System.out.println("Done saving course");
     }
 
     private void updateCourse(AppDAO appDAO) {

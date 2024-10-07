@@ -79,4 +79,10 @@ public class AppDAOImpl implements AppDAO {
     public void updateCourse(Course course) {
         manager.merge(course);
     }
+
+    @Override
+    @Transactional
+    public void saveCourse(Course course) {
+        manager.persist(course);
+    }
 }
