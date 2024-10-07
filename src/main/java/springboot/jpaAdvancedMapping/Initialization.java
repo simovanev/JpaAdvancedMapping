@@ -32,7 +32,15 @@ public class Initialization implements CommandLineRunner {
         //findCoursesById(appDAO);
         //updateInstructor(appDAO);
         //updateCourse(appDAO);
-        saveCourseWithAssociatedReviews(appDAO);
+        //saveCourseWithAssociatedReviews(appDAO);
+        findCourseAndReviews(appDAO);
+    }
+
+    private void findCourseAndReviews(AppDAO appDAO) {
+        int id=10;
+        Course courseAndReviewsById = appDAO.findCourseAndReviewsById(id);
+        System.out.println(courseAndReviewsById);
+        System.out.println(courseAndReviewsById.getReviews());
     }
 
     private void saveCourseWithAssociatedReviews(AppDAO appDAO) {
